@@ -1,9 +1,11 @@
 # JalSetu (जलसेतु)
 ### "From Water Crisis to Intelligent Response."
 
+> **Live Deployment**: 🌐 [https://main.d1wxnvvorb7zrn.amplifyapp.com](https://main.d1wxnvvorb7zrn.amplifyapp.com)  
+> **GitHub Repository**: 📦 [https://github.com/rpulijala18/jalsetu](https://github.com/rpulijala18/jalsetu)  
 > **Track**: Heat & Water — Water scarcity, tanker management, leaks, floods, droughts, and water conservation.  
 > **Type**: AI-Powered 3D Digital Twin & Autonomous Water Crisis Response System.  
-> **Architecture**: React + TypeScript + Three.js / React Three Fiber + Tailwind CSS + Amazon Bedrock + AWS Step Functions + Amazon EventBridge + Amazon DynamoDB + Amazon Cognito.
+> **Architecture**: React 19 + TypeScript + Three.js / React Three Fiber + Tailwind CSS + Amazon Bedrock + AWS Step Functions + AWS Amplify Hosting.
 
 ---
 
@@ -172,13 +174,28 @@ npm run build
 
 ---
 
+## 💰 Cost Considerations & Resource Cleanup
+JalSetu is designed to be highly cost-efficient:
+- **AWS Amplify Hosting**: Operates within the AWS Free Tier (1,000 build minutes/month, 5 GB stored, 15 GB served).
+- **Amazon Bedrock**: Pay-per-token model with zero idle cost.
+- **Client-Side Autonomous Simulation**: Renders 100% in WebGL without expensive GPU server instances.
+
+### Cleanup / Teardown Instructions
+To remove deployed AWS resources and avoid any recurring storage fees:
+```bash
+# Delete AWS Amplify Hosting App
+aws amplify delete-app --app-id d1wxnvvorb7zrn --region us-east-1
+```
+
+---
+
 ## 🔒 Security & Safe AI Design
 - **Local Safety Validation Layer**: Every Bedrock AI suggestion is strictly evaluated against physical hydraulic constraints before execution. If safety validation fails, deterministic municipal fallback rules are activated.
-- **Zero Exposed Secrets**: No AWS access keys or tokens reside in frontend bundles.
-- **Cognito Least-Privilege Scoping**: Operational access requires authenticated roles.
+- **Zero Exposed Secrets**: No AWS access keys, secret tokens, or private credentials are stored in frontend bundles or environment variables.
+- **SPA Routing Protection**: Rewrite rules forward direct sub-route hits (`/command-center`, `/impact`, `/simulation`) to `index.html` preventing 404s.
 
 ---
 
 ## 🏆 Hackathon Credits & Authors
-Built with dedication for the **Heat & Water Track**.  
+Built with dedication for the **WeMakeDevs × AWS Environmental Hacks 2026** (Heat & Water Track).  
 *JalSetu: Intelligent Water Security for Every Community.*
